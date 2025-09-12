@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer utilities{
+
+.navy{
+    @apply  relative
+}
+
+.navy::after{
+    
+    @apply absolute h-1  w-[0%] -right-0  content-[''] bg-white tracking-[1px] top-8 duration-300
+
+}
+
+.navy:hover::after{
+    @apply w-[100%] left-0
+
+}
+}
