@@ -28,7 +28,7 @@ const Navbar = () => {
         <li>
           <Link href="/subscribe">
             <button className="h-12 px-6 rounded-xl bg-cyan-200 text-black hover:bg-cyan-800">
-              Subscribe
+              Sign In
             </button>
           </Link>
         </li>
