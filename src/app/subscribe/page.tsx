@@ -29,12 +29,10 @@ export default function SigninPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Invalid credentials");
 
-      // Success message
       setMessage(` Welcome back, ${data.user.username}!`);
       setMessageColor("text-green-500");
       setForm({ email: "", password: "" });
 
-      // Redirect to dashboard after 1 second
       setTimeout(() => router.push("/"), 1000);
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -47,54 +45,62 @@ export default function SigninPage() {
   };
 
   return (
-    <div className=" min-h-screen bg-[#191B1F] ">
-      <Navbar/>
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-md w-96 h-96 ml-[30rem] mt-20 flex  flex-col justify-center items-center"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">Sign In</h2>
+    <div className="min-h-screen bg-[#191B1F] flex flex-col">
+      <Navbar />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          className="w-full p-2 mb-3 border rounded"
-          required
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          className="w-full p-2 mb-3 border rounded"
-          required
-        />
-
-        <button
-          type="submit"
-          className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-500"
+      
+      <div className="flex flex-1 items-center justify-center px-4">
+        <form
+          onSubmit={handleSubmit}
+          className="
+            bg-white p-6 rounded-xl shadow-md
+            w-full max-w-sm
+            flex flex-col justify-center items-center
+          "
         >
-          Sign In
-        </button>
+          <h2 className="text-2xl font-bold mb-4 text-center">Sign In</h2>
 
-        {/* Sign Up link */}
-        <p className="mt-4 text-center text-sm">
-          Don’t have an account?{" "}
-          <Link href="/signup" className="text-blue-600 underline">
-            Sign Up
-          </Link>
-        </p>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            className="w-full p-2 mb-3 border rounded"
+            required
+          />
 
-        {/* Message */}
-        {message && (
-          <p className={`mt-3 text-sm text-center ${messageColor}`}>{message}</p>
-        )}
-      </form>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            className="w-full p-2 mb-3 border rounded"
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-500"
+          >
+            Sign In
+          </button>
+
+          <p className="mt-4 text-center text-sm">
+            Don’t have an account?{" "}
+            <Link href="/signup" className="text-blue-600 underline">
+              Sign Up
+            </Link>
+          </p>
+
+          {message && (
+            <p className={`mt-3 text-sm text-center ${messageColor}`}>
+              {message}
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

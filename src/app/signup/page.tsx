@@ -15,7 +15,7 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -31,9 +31,8 @@ export default function SignUpPage() {
       }
 
       setMessage(" Account created successfully!");
-     
-      setTimeout(() => router.push("/signin"), 1500);
 
+      setTimeout(() => router.push("/signin"), 1500);
     } catch (err) {
       console.error(err);
       setMessage(" Failed to sign up. Try again.");
@@ -41,68 +40,72 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black md:px-0 px-4">
-      <Navbar/>
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md  mt-20 ml-[30rem] md:"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+    <div className="min-h-screen bg-black flex flex-col">
+      <Navbar />
 
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-        />
-
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-        />
-
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="w-full mb-4 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
-        />
-
-        <button
-          type="submit"
-          className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+     
+      <div className="flex flex-1 items-center justify-center px-4">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white p-6 rounded-lg shadow-md"
         >
-          Sign up
-        </button>
+          <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
 
-        {message && (
-          <p className="text-center mt-3 text-sm text-gray-700">{message}</p>
-        )}
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+          />
 
-        <p className="text-sm text-center mt-4">
-          Already have an account?{" "}
-          <Link href="/signIn" className="text-blue-600 hover:underline">
-            Sign in
-          </Link>
-        </p>
-      </form>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full mb-4 px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+          />
+
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          >
+            Sign up
+          </button>
+
+          {message && (
+            <p className="text-center mt-3 text-sm text-gray-700">{message}</p>
+          )}
+
+          <p className="text-sm text-center mt-4">
+            Already have an account?{" "}
+            <Link href="/subscribe" className="text-blue-600 hover:underline">
+              Sign in
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
