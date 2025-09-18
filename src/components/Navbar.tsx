@@ -7,19 +7,20 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b-2 border-gray-800 h-20 flex items-center px-4 md:px-8 gap-32 font-[inter] text-gray-600">
+    <nav className=" bg-black border-b-2 border-gray-800 h-20 flex items-center px-4 md:px-2 gap-32 font-[inter] text-gray-600">
       
-      <h1 className="text-xl md:text-3xl text-emerald-300 font-serif font-medium ml-32 hover:text-gray-700">
+      <h1 className="text-xl md:text-3xl text-emerald-300 font-serif font-medium ml-20 hover:text-gray-700">
         <Link href="/">Scribe</Link>
       </h1>
 
     
-      <ul className="hidden md:flex md:ml-2 gap-6 ml-18 text-xl">
+      <ul className="hidden md:flex md:ml-2 gap-4 ml-18 text-xl">
         <li className="navy hover:text-white "><Link href="/articles">All articles</Link></li>
         <li  className="navy hover:text-white "><Link href="/culture">Culture</Link></li>
         <li  className="navy hover:text-white "><Link href="/lifestyle">Lifestyle</Link></li>
         <li  className="navy hover:text-white "><Link href="/people">People</Link></li>
         <li  className="navy hover:text-white "><Link href="/technology">Technology</Link></li>
+        <li  className="navy hover:text-white "><Link href="/posts">Create Blog</Link></li>
       </ul>
 
       

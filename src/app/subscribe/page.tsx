@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
+
 
 export default function SigninPage() {
   const router = useRouter();
@@ -46,7 +46,7 @@ export default function SigninPage() {
 
   return (
     <div className="min-h-screen bg-[#191B1F] flex flex-col">
-      <Navbar />
+    
 
       
       <div className="flex flex-1 items-center justify-center px-4">
@@ -84,7 +84,8 @@ export default function SigninPage() {
             type="submit"
             className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-500"
           >
-            Sign In
+            <Link href='/context'>Sign In</Link>
+            
           </button>
 
           <p className="mt-4 text-center text-sm">

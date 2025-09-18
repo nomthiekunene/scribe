@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Navbar from "@/components/Navbar";
+
 
 export default function SignUpPage() {
   const [name, setName] = useState("");
@@ -41,7 +41,7 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen bg-black flex flex-col">
-      <Navbar />
+    
 
      
       <div className="flex flex-1 items-center justify-center px-4">
