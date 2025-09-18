@@ -1,60 +1,99 @@
 "use client";
 
-import React from 'react';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Navbar from '@/components/Navbar';
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
-
-
-export default function SignInPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function SigninPage() {
   const router = useRouter();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [message, setMessage] = useState("");
+  const [messageColor, setMessageColor] = useState("text-red-500");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add sign-in API logic here
-    console.log({ email, password });
-    router.push("/dashboard"); // Redirect after login
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Invalid credentials");
+
+      // Success message
+      setMessage(` Welcome back, ${data.user.username}!`);
+      setMessageColor("text-green-500");
+      setForm({ email: "", password: "" });
+
+      // Redirect to dashboard after 1 second
+      setTimeout(() => router.push("/"), 1000);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setMessage(` ${err.message}`);
+      } else {
+        setMessage(" An unexpected error occurred");
+      }
+      setMessageColor("text-red-500");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <Navbar />
+    <div className=" min-h-screen bg-[#191B1F] ">
+      <Navbar/>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-2xl shadow-md w-96 h-96 mt-40 ml-[35rem] flex flex-col justify-center items-center"
+        className="bg-white p-6 rounded-xl shadow-md w-96 h-96 ml-[30rem] mt-20 flex  flex-col justify-center items-center"
       >
-        <h1 className="text-2xl font-bold mb-6 text-center">Sign In</h1>
+        <h2 className="text-2xl font-bold mb-4 text-center">Sign In</h2>
+
         <input
           type="email"
+          name="email"
           placeholder="Email"
-          className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={form.email}
+          onChange={handleChange}
+          className="w-full p-2 mb-3 border rounded"
           required
         />
+
         <input
           type="password"
+          name="password"
           placeholder="Password"
-          className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={form.password}
+          onChange={handleChange}
+          className="w-full p-2 mb-3 border rounded"
           required
         />
+
         <button
           type="submit"
-          className="w-full bg-emerald-300 text-black py-3 rounded-lg hover:bg-emerald-600 transition"
+          className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-500"
         >
           Sign In
         </button>
-        <p className="text-sm text-center mt-4">
+
+        {/* Sign Up link */}
+        <p className="mt-4 text-center text-sm">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-emerald-600 font-medium">
+          <Link href="/signup" className="text-blue-600 underline">
             Sign Up
-          </a>
+          </Link>
         </p>
+
+        {/* Message */}
+        {message && (
+          <p className={`mt-3 text-sm text-center ${messageColor}`}>{message}</p>
+        )}
       </form>
     </div>
   );

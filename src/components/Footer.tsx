@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className=" h-[95vh] bg-black ">
-    <div className="flex justify-center gap-72 pt-40 border-b-2 border-gray-800 pb-20 w-[80%] mx-auto">
+    <div className="flex justify-center gap-40 pt-20 border-b-2 border-gray-800 pb-20 w-[80%] mx-auto">
       <h1 className="text-2xl md:text-4xl text-emerald-300 font-serif font-medium hover:text-gray-700">
         <Link href="/">Scribe</Link>
       </h1>

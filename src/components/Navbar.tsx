@@ -7,24 +7,24 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b-2 border-gray-800 h-20 flex items-center px-4 md:px-8  font-[inter] text-[rgb(255,255,255)]">
+    <nav className="border-b-2 border-gray-800 h-20 flex items-center px-4 md:px-8 gap-32 font-[inter] text-gray-600">
       
-      <h1 className="text-2xl md:text-4xl text-emerald-300 font-serif font-medium ml-32 hover:text-gray-700">
+      <h1 className="text-xl md:text-3xl text-emerald-300 font-serif font-medium ml-32 hover:text-gray-700">
         <Link href="/">Scribe</Link>
       </h1>
 
     
-      <ul className="hidden md:flex gap-6 ml-18 text-2xl ">
-        <li className="navy"><Link href="/articles">All articles</Link></li>
-        <li  className="navy"><Link href="/culture">Culture</Link></li>
-        <li  className="navy"><Link href="/lifestyle">Lifestyle</Link></li>
-        <li  className="navy"><Link href="/people">People</Link></li>
-        <li  className="navy"><Link href="/technology">Technology</Link></li>
+      <ul className="hidden md:flex md:ml-2 gap-6 ml-18 text-xl">
+        <li className="navy hover:text-white "><Link href="/articles">All articles</Link></li>
+        <li  className="navy hover:text-white "><Link href="/culture">Culture</Link></li>
+        <li  className="navy hover:text-white "><Link href="/lifestyle">Lifestyle</Link></li>
+        <li  className="navy hover:text-white "><Link href="/people">People</Link></li>
+        <li  className="navy hover:text-white "><Link href="/technology">Technology</Link></li>
       </ul>
 
       
-      <ul className="hidden md:flex gap-5 ml-auto items-center text-2xl mr-36">
-        <li className="navy"><Link href="/about">About</Link></li>
+      <ul className="hidden md:flex gap-5 ml-auto items-center text-xl mr-36">
+        <li className="navy hover:text-white "><Link href="/about">About</Link></li>
         <li>
           <Link href="/subscribe">
             <button className="h-12 px-6 rounded-xl bg-cyan-200 text-black hover:bg-cyan-800">

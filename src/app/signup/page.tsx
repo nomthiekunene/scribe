@@ -41,11 +41,11 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black md:px-0 px-4">
       <Navbar/>
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md  mt-40 ml-[35rem]"
+        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md  mt-20 ml-[30rem] md:"
       >
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
 
