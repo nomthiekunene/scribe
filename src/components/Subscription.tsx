@@ -21,10 +21,10 @@ const Subscription = () => {
         <input
           type="text"
           placeholder="Enter your email"
-          className="bg-black text-gray-600 text-lg sm:text-xl md:text-2xl rounded-xl h-12 sm:h-16 w-[90%] sm:w-[24rem] md:w-[30rem] px-4"
+          className="bg-black text-gray-600 text-lg sm:text-xl md:text-2xl rounded-xl h-10 sm:h-10 w-[90%] sm:w-[24rem] md:w-[30rem] px-4"
         />
         <Link href="/subscribe" className="w-[90%] sm:w-auto">
-          <button className="h-12 sm:h-16 w-full sm:w-32 md:w-40 rounded-xl bg-green-950 text-white text-lg sm:text-xl md:text-2xl">
+          <button className="h-10 sm:h-10 w-full sm:w-[24rem] md:w-[30rem] rounded-xl bg-green-950 text-white text-lg sm:text-xl md:text-2xl">
             Subscribe
           </button>
         </Link>

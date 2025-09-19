@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useUser } from "@/components/UserContext";
 
 
 export default function SigninPage() {
   const router = useRouter();
+  const { setUser } = useUser();
   const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const [messageColor, setMessageColor] = useState("text-red-500");
@@ -29,11 +31,13 @@ export default function SigninPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Invalid credentials");
 
-      setMessage(` Welcome back, ${data.user.username}!`);
+      setUser(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      setMessage(` Welcome back, ${data.user.name}!`);
       setMessageColor("text-green-500");
       setForm({ email: "", password: "" });
 
-      setTimeout(() => router.push("/"), 1000);
+      setTimeout(() => router.push("/posts"), 1000);
     } catch (err: unknown) {
       if (err instanceof Error) {
         setMessage(` ${err.message}`);
@@ -82,10 +86,9 @@ export default function SigninPage() {
 
           <button
             type="submit"
-            className="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-500"
+            className="w-full bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-500"
           >
-            <Link href='/context'>Sign In</Link>
-            
+            Sign In
           </button>
 
           <p className="mt-4 text-center text-sm">

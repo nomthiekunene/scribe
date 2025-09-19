@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       message: "Signin successful",
       user: {
         id: User._id,
-        username: User.username,
+        name: User.name,
         email: User.email,
       },
     });
