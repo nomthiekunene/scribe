@@ -8,7 +8,7 @@ const home = () => {
   return (
     <div>
      <Welcome/>
-     <Newsletter/>
+     <Newsletter sty="text-gray-500 mt-4"/>
      <Footer/>
     </div>
   )

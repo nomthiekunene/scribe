@@ -15,12 +15,13 @@ const postSchema = new Schema({
     required: true},
 
     date : 
-    {type: Date, 
+    {type: Date,   
     default: Date.now},
 
-    imageUrl : 
-    {type: String, 
-    required: true}
+    imageUrl :
+    {type: String,
+    required: false,
+    default: ''}
 })
 
 export default mongoose.models.post || mongoose.model("post", postSchema);
