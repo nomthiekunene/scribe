@@ -1,5 +1,7 @@
+import { CldImage } from "next-cloudinary";
 import React from "react";
-
+import Link from "next/link";
+ 
 
  
 const Welcome = () => {
@@ -13,12 +15,22 @@ const Welcome = () => {
         </h1>
       </div>
 
-      <div className="flex px-20  mt-10 sm:mt-16 md:mt-20 text-center">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-[90%] md:w-[80%] mx-auto gap-8 md:gap-0">
+      <div className="flex px-20 mt-10 sm:mt-16 md:mt-20 text-center">
+        <div className="flex flex-col gap-8">
           <h2 className="text-white text-2xl font-serif">Featured</h2>
-                  
+          <Link href="/">
+ 
+<CldImage
+  width="960"
+  height="600"
+  src="sample"
+  sizes="100vw"
+  alt="canvas"
+  className="rounded-lg hover:scale-105 transition-transform duration-300"
+/>
+          </Link>   
           </div>
-        <div className="flex  md:flex-row justify-between items-center md:items-start w-[90%] md:w-[80%] mx-auto gap-8 md:gap-0">
+        <div className="flex  flex-col md:flex-row justify-between items-center md:items-start w-[90%] md:w-[80%] mx-auto gap-8 md:gap-0">
           <h2 className="text-white text-2xl font-serif">Recent</h2>
         </div>
       </div>

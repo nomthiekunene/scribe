@@ -21,7 +21,12 @@ const postSchema = new Schema({
     imageUrl :
     {type: String,
     required: false,
-    default: ''}
+    default: ''},
+
+    likes: {
+        type: [String],
+        default: []
+    }
 })
 
 export default mongoose.models.post || mongoose.model("post", postSchema);

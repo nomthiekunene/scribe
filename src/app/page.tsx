@@ -1,4 +1,7 @@
+"use client"
+
 import React from 'react';
+import { CldImage } from 'next-cloudinary';
 import Welcome from '@/components/Welcome';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connect from "../../../../db";
 import post from "../../../../models/post";
+import comment from "../../../../models/comment";
 import { v2 as cloudinary } from 'cloudinary';
 
 interface PostData {
@@ -10,7 +11,7 @@ interface PostData {
   imageUrl?: string;
 }
 
-// Configure Cloudinary
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -20,8 +21,17 @@ cloudinary.config({
 export const GET = async () => {
     try {
         await connect();
-        const posts = await post.find();
-        return new NextResponse(JSON.stringify(posts), {status: 200});
+        const posts = await post.find().sort({ date: -1 });
+        const postsWithCommentCount = await Promise.all(
+            posts.map(async (p) => {
+                const commentCount = await comment.countDocuments({ postId: p._id });
+                return {
+                    ...p.toObject(),
+                    commentCount
+                };
+            })
+        );
+        return new NextResponse(JSON.stringify(postsWithCommentCount), {status: 200});
     }
     catch (error) {
         return new NextResponse("Could not connect" + error, {status: 500});

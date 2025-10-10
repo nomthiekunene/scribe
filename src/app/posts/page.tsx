@@ -130,6 +130,7 @@ export default function BlogPostForm() {
           {message.text}
         </p>
       )}
+
     </div>
   );
 }
