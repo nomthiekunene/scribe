@@ -105,7 +105,7 @@ export default function ArticlesList() {
   };
 
   if (loading) {
-    return <div className="text-center py-20 text-white">Loading articles...</div>;
+    return <div className="text-center py-20 text-white">Please Wait As I Load Your Articles...</div>;
   }
 
   if (error) {
@@ -149,7 +149,7 @@ export default function ArticlesList() {
                     className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${
                       user && post.likes.includes(user.id)
                         ? "bg-red-500 text-white hover:bg-red-600"
-                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        : "bg-gray-700 text-white hover:bg-gray-500"
                     } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     <span>{user && post.likes.includes(user.id) ? "❤️" : "🤍"}</span>
