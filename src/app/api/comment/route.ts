@@ -13,7 +13,7 @@ export const GET = async (request: Request) => {
       return new NextResponse("Post ID is required", { status: 400 });
     }
 
-    const query: any = { postId };
+    const query: { postId: string; imageUrl?: string } = { postId };
     if (imageUrl) {
       query.imageUrl = imageUrl;
     }

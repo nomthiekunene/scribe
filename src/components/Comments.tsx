@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useUser } from "./UserContext";
 
 interface Comment {
@@ -26,11 +26,7 @@ export default function Comments({ postId, imageUrl, title = "Comments" }: Comme
     type: "",
   });
 
-  useEffect(() => {
-    fetchComments();
-  }, [postId]);
-
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       const url = `/api/comment?postId=${postId}${imageUrl ? `&imageUrl=${encodeURIComponent(imageUrl)}` : ''}`;
       const res = await fetch(url);
@@ -38,10 +34,14 @@ export default function Comments({ postId, imageUrl, title = "Comments" }: Comme
         const data = await res.json();
         setComments(data);
       }
-    } catch (error) {
-      console.error("Failed to fetch comments:", error);
+    } catch {
+      console.error("Failed to fetch comments");
     }
-  };
+  }, [postId, imageUrl]);
+
+  useEffect(() => {
+    fetchComments();
+  }, [fetchComments]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,10 +70,9 @@ export default function Comments({ postId, imageUrl, title = "Comments" }: Comme
         setNewComment("");
         fetchComments(); 
       } else {
-        const error = await res.text();
-        setMessage({ text: error || "Failed to add comment", type: "error" });
+        setMessage({ text: "Failed to add comment", type: "error" });
       }
-    } catch (error) {
+    } catch {
       setMessage({ text: "An error occurred", type: "error" });
     } finally {
       setLoading(false);

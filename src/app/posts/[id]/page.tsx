@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import Comments from "@/components/Comments";
 import { useUser } from "@/components/UserContext";
 
@@ -24,13 +25,7 @@ export default function PostPage() {
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
 
-  useEffect(() => {
-    if (id) {
-      fetchPost();
-    }
-  }, [id]);
-
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       const res = await fetch("/api/post");
       if (res.ok) {
@@ -46,12 +41,18 @@ export default function PostPage() {
       } else {
         setError("Failed to fetch post");
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred");
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, user]);
+
+  useEffect(() => {
+    if (id) {
+      fetchPost();
+    }
+  }, [id, fetchPost]);
 
   const handleLike = async () => {
     if (!user || !post) return;
@@ -96,9 +97,11 @@ export default function PostPage() {
         <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
         <h2 className="text-xl md:text-2xl text-gray-600 mb-4">{post.subtitle}</h2>
         {post.imageUrl && (
-          <img
+          <Image
             src={post.imageUrl}
             alt={post.title}
+            width={800}
+            height={400}
             className="w-full h-64 object-cover mb-6 rounded"
           />
         )}

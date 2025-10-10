@@ -35,7 +35,7 @@ export default function ArticlesList() {
       } else {
         setError("Failed to fetch articles");
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred while fetching articles");
     } finally {
       setLoading(false);
