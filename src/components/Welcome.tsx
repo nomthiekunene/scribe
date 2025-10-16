@@ -21,6 +21,21 @@ const Welcome = () => {
           <Link href="/">
  
 <CldImage
+  width="600"
+  height="300"
+  src="sample"
+  sizes="100vw"
+  alt="canvas"
+  className="rounded-lg hover:scale-105 transition-transform duration-300"
+/>
+<div className="flex">
+<h4 className="border-t-2 border-emerald-300 text-emerald-300 mt-5 hover:scale-105 transition-transform duration-300">TECHNOLOGY</h4>
+<h1></h1>
+</div>
+          </Link> 
+          <Link href="/">
+ 
+<CldImage
   width="960"
   height="600"
   src="sample"
