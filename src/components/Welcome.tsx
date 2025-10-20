@@ -83,7 +83,7 @@ const Welcome = () => {
               </h6>
               <p className=" text-gray-700 mt-2 hover:scale-105 transition-transform duration-300">
                 Discussing the importance and benefits of mindfulness practices
-                in today's busy lifestyle.
+                in today&apos;s busy lifestyle.
               </p>
             </Link>
 
@@ -105,7 +105,7 @@ const Welcome = () => {
               </h6>
               <p className=" text-gray-700 mt-2 hover:scale-105 transition-transform duration-300">
                 Discussing the importance and benefits of mindfulness practices
-                in today's busy lifestyle.
+                in today&apos;s busy lifestyle.
               </p>
             </Link>
           </div>
@@ -128,7 +128,7 @@ const Welcome = () => {
               </h6>
               <p className=" text-gray-700 mt-2 hover:scale-105 transition-transform duration-300">
                 Discussing the importance and benefits of mindfulness practices
-                in today's busy lifestyle.
+                in today&apos;s busy lifestyle.
               </p>
             </Link>
 
@@ -150,7 +150,7 @@ const Welcome = () => {
               </h6>
               <p className=" text-gray-700 mt-2 hover:scale-105 transition-transform duration-300">
                 Discussing the importance and benefits of mindfulness practices
-                in today's busy lifestyle.
+                in today&apos;s busy lifestyle.
               </p>
             </Link>
           </div>
@@ -173,7 +173,7 @@ const Welcome = () => {
               </h6>
               <p className=" text-gray-700 mt-2 hover:scale-105 transition-transform duration-300">
                 Discussing the importance and benefits of mindfulness practices
-                in today's busy lifestyle.
+                in today&apos;s busy lifestyle.
               </p>
             </Link>
 
@@ -195,7 +195,7 @@ const Welcome = () => {
               </h6>
               <p className=" text-gray-700 mt-2 hover:scale-105 transition-transform duration-300">
                 Discussing the importance and benefits of mindfulness practices
-                in today's busy lifestyle.
+                in today&apos;s busy lifestyle.
               </p>
             </Link>
           </div>

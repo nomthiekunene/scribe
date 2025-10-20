@@ -7,7 +7,7 @@ const techno = () => {
   return (
     <div>
         <Blogtech/>
-      <Newsletter/>
+      <Newsletter sty="text-gray-600 mt-10 text-center"/>
       <Footer/>
     </div>
   )
